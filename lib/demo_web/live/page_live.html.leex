@@ -1,0 +1,30 @@
+<section class="hero">
+  Troubleshooting Error:
+  <pre><code>TypeError: this.getRootById(...) is undefined</code></pre>
+</section>
+
+<section>
+  <h2>Error:</h2>
+  <ul>
+    <li>
+      <%= link "Loading Parent LiveView with Child LiveView via `link`", to: Routes.parent_path(@socket, :index) %>
+    </li>
+  </ul>
+</section>
+
+<hr/>
+
+<section>
+  <h2>No Error:</h2>
+  <ul>
+    <li>
+      <%= live_redirect "Loading Parent LiveView with Child LiveView via `live_redirect`", to: Routes.parent_path(@socket, :index) %>
+    </li>
+    <li>
+      <%= link "Loading Child LiveView via `link`", to: Routes.child_path(@socket, :index) %>
+    </li>
+    <li>
+      <%= live_redirect "Loading Child LiveView via `live_redirect`", to: Routes.child_path(@socket, :index) %>
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,24 @@
+<section>
+  <h2>Parent LiveView</h2>
+  <div>
+    Live Links:
+    <%= live_patch "Index", to: Routes.parent_path(@socket, :index) %>
+    <%= live_patch "New", to: Routes.parent_path(@socket, :new) %>
+    <%= live_patch "Show", to: Routes.parent_path(@socket, :show, 1) %>
+    <%= live_patch "Edit", to: Routes.parent_path(@socket, :edit, 1) %>
+  </div>
+  <div>URL: <%= @url %></div>
+  <div>Live Action: <%= @live_action %></div>
+
+  <h2>Child LiveView</h2>
+	<%=
+    # The Comment out `live_render` and the error goes away
+
+    Phoenix.LiveView.Helpers.live_render(
+      @socket,
+      DemoWeb.ChildLive,
+      id: "child-id-#{UUID.uuid4()}",
+      session: %{}
+    )
+	%>
+</section>
