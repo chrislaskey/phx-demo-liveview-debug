@@ -3,7 +3,7 @@ defmodule DemoWeb.ParentLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    {:ok, assign(socket, :child_id, "id-1")}
   end
 
   @impl true

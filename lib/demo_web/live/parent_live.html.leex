@@ -12,12 +12,18 @@
 
   <h2>Child LiveView</h2>
 	<%=
-    # The Comment out `live_render` and the error goes away
+    # Note: The core issue was identified and solved by @sfusato in
+    # https://github.com/phoenixframework/phoenix_live_view/issues/923#issuecomment-640021554
+    #
+    # The `id` value cannot be randomly generated from within the template. If
+    # it truly must be random, then generate the value  within the Parent LiveView and
+    # passing it down the Child LiveView live_render call with an assign, as
+    # implemented below.
 
     Phoenix.LiveView.Helpers.live_render(
       @socket,
       DemoWeb.ChildLive,
-      id: "child-id-#{UUID.uuid4()}",
+      id: @child_id,
       session: %{}
     )
 	%>
